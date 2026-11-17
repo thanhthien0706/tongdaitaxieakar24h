@@ -1,0 +1,73 @@
+/* Mobile adaptation — loaded after the page's inline styles.
+   Inline style="" attributes from the page builder need !important to be overridden. */
+
+html { -webkit-text-size-adjust: 100%; }
+
+@media (max-width: 767.98px) {
+  body { padding-bottom: calc(76px + env(safe-area-inset-bottom)); }
+  img, video, iframe { max-width: 100%; }
+  iframe { width: 100%; }
+
+  /* ---- Header: one compact row (logo · call banner · menu) ---- */
+  .header .container > .content-component__list {
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    align-items: center;
+    gap: 8px;
+    padding-block: 6px;
+  }
+  .header .container > .content-component__list > .content-component__item {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    padding-top: 0 !important;
+    margin: 0 !important;
+  }
+  .header .container > .content-component__list > .content-component__item > .content-component__item {
+    margin-inline: 0 !important;
+  }
+  .header .container > .content-component__list > .content-component__item:nth-child(1) { order: 1; flex: 0 1 auto !important; }
+  .header .container > .content-component__list > .content-component__item:nth-child(3) { order: 2; flex: 1 1 0 !important; min-width: 0; justify-content: center; }
+  .header .container > .content-component__list > .content-component__item:nth-child(2) { order: 3; }
+  .header .logo img { height: 56px; width: auto; max-width: none; }
+  .header .image img { max-height: 54px; width: auto; max-width: 100%; margin-inline: auto; }
+  .header-menu__btn.header-mobile {
+    display: grid; place-items: center;
+    width: 44px; height: 44px; cursor: pointer;
+  }
+  .header-menu__item--close a { min-height: 44px; display: flex; align-items: center; justify-content: flex-end; }
+  .header-menu__item a { padding-block: 16px; font-size: 16px; }
+
+  /* ---- Floating Zalo / call: bottom bar instead of covering content ---- */
+  .contact {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    left: max(8px, env(safe-area-inset-left));
+    right: max(8px, env(safe-area-inset-right));
+    bottom: max(8px, env(safe-area-inset-bottom));
+    pointer-events: none;
+  }
+  .contact-item { pointer-events: auto; }
+  .contact-item__thumbnail { width: 60px; height: 60px; padding: 6px; }
+  .contact-item__title { height: 44px; line-height: 44px; font-size: 16px; margin-left: -34px; padding-left: 38px; padding-right: 22px; }
+
+  /* ---- Reading comfort: no justified rivers on narrow measure ---- */
+  .css-content p, .css-content ul li, .css-content ol li,
+  .post__description, [style*="text-align: justify"] { text-align: left !important; }
+  .css-content img, .css-content table, .css-content iframe { max-width: 100%; height: auto; }
+  .css-content table { display: block; overflow-x: auto; }
+
+  /* ---- Touch targets ≥ 44px for plain text links ---- */
+  .footer a { display: inline-block; min-height: 32px; padding-block: 6px; }
+  .breadcrumb ul { flex-wrap: wrap; }
+  .breadcrumb li, .breadcrumb a, .breadcrumb span { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+  .footer a[href^="tel"], .footer a[href^="https://zalo"] { min-height: 44px; }
+}
+
+@media (max-width: 389.98px) {
+  .header .logo img { height: 48px; }
+}
+
+@media (hover: none) {
+  a, button { -webkit-tap-highlight-color: rgba(2, 97, 198, .15); }
+}
